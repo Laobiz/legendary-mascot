@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "cheerio": "1.0.0-rc.3",
-    "got": "^11.8.2"
+    "puppeteer": "^10.4.0",
+    "telegraf": "^4.4.2"
   }
 }
