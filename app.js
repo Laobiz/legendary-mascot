@@ -16,20 +16,20 @@ async function crawl() {
 }
 
 function getMovies() {
-  var movies = [];
   crawl().then(function(result) {
+    var movies = []
     for (const [_, value1] of Object.entries(result.filme)) {
       movies.push(value1.filmfakten.titel);
     }
+    bot.hears('movies', (ctx) => ctx.reply(movies.join('\n')))
   });
-  return movies;
 }
 
 const { Telegraf } = require('telegraf')
 
 const bot = new Telegraf(process.env.TELEGRAM_BOT_KEY)
+getMovies()
 bot.start((ctx) => ctx.reply('Welcome'))
-bot.help((ctx) => ctx.reply(getMovies())) //TODO: Returns empty list
 bot.on('sticker', (ctx) => ctx.reply('👍'))
 bot.hears('hi', (ctx) => ctx.reply('Hey there'))
 bot.launch()
