@@ -1,6 +1,6 @@
 async function crawl() {
   const puppeteer = require('puppeteer');
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ignoreDefaultArgs: ['--disable-extensions'], args: ['--no-sandbox']});
   
   const page = await browser.newPage();
   await page.goto('https://www.corsokino.de/programm');
